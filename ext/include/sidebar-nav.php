@@ -34,13 +34,20 @@
         if(count($subItemArray) > 0) {
             ?>
             <li>
-                <span data-target=".dashboard-menu" class="nav-header" data-toggle="collapse">
+                <a data-target=".<?php echo $itemIndex; ?>-menu" class="nav-header" data-toggle="collapse">
+                	<?php 
+                	if(count($item->classes) > 0) {
+                		?>
+                		<i class="<?php echo implode(" ", $item->classes);?>"></i>
+                		<?php 
+                	}
+                	?>
                     <?php echo $item->title; ?><i class="fa fa-collapse">
                     </i>
-                </span>
+                </a>
     		</li>
             <?php 
-            ?><li><ul class="dashboard-menu nav nav-list collapse" onclick="change(this);"><?php
+            ?><li><ul class="<?php echo $itemIndex; ?>-menu nav nav-list collapse" ><?php
             foreach($subItemArray as $subObj) {
             ?>
             <li><a href="<?php echo $subObj['url']; ?>">
@@ -53,8 +60,14 @@
             ?>
             <li>
                 <a href="<?php echo $item->url; ?>" data-target=".dashboard-menu" class="nav-header" >
-                    <?php echo $item->title; ?><i class="fa fa-collapse">
-                    </i>
+                	<?php 
+                	if(count($item->classes) > 0) {
+                		?>
+                		<i class="<?php echo implode(" ", $item->classes);?>"></i>
+                		<?php 
+                	}
+                	?>
+                    <?php echo $item->title; ?>
                 </a>
     		</li>
             <?php 
