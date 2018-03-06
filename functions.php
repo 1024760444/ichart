@@ -4,6 +4,9 @@ if (function_exists('register_sidebar')){
     register_sidebar( array() );
 }
 
+// 引入各个功能模块
+get_template_part( 'ext/include/navigation' ); // 引入分页功能
+
 /**
  * 屏蔽所有小工具。
  * 参考文章： http://www.frontopen.com/1397.html
@@ -36,4 +39,16 @@ function auto_redirect_after_login() {
     wp_redirect ( home_url () );
     exit ();
 }
+
+// 默认情况下，excerpt长度设置为55个字
+function new_excerpt_length($length) {
+	return 180;
+}
+add_filter('excerpt_length', 'new_excerpt_length');
+
+// 自定义文章摘要
+function my_init() {
+	add_post_type_support('page', array('excerpt'));
+}
+add_action('init', 'my_init');
 ?>
