@@ -4,7 +4,6 @@
 * 因为wordpress默认仅仅提供简单分页
 * 所以要实现数字分页，需要自定义函数
 * @Param int $range            数字分页的宽度
-* @Return string|empty        输出分页的HTML代码        
 */
 function chart_pagenavi( $range = 4 ) {
     global $paged,$wp_query;
